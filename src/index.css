@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root{
+    background-color: #F8F6F1;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+body{
+    min-width: 349px;
+}
+
