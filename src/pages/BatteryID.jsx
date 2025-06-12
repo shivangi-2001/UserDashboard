@@ -82,6 +82,7 @@ const BatteryID = () => {
     })
 
     const [processing, setProcessing] = useState()
+    const [cellAssembly, setCellAssembly] = useState();
 
     const batteryID = async() => {
         let result;
@@ -92,7 +93,9 @@ const BatteryID = () => {
         }
 
         if(result.message){
-            setProcessing(result?.message.processing)
+            console.log(result.message);
+            setProcessing(result?.message.material_processing);
+            setCellAssembly(result?.message.cell_assembly);
             setPerform({
                 "Active cathode volume expansion (%)" : extractValue(result?.message.active_anode_volume),
                 "Active anode volume expansion (%)" : extractValue(result?.message.active_cathode_volume),
@@ -168,13 +171,13 @@ const BatteryID = () => {
     return ( 
         <Layout>
             <PageTitle title={`Battery-${id}`} />
-            <div ref={ContentRef} className=" container mx-auto">
+            <div ref={ContentRef} className="w-full sm:w-[80%] mx-auto px-4 py-8 bg-gray-50">
             
-            <h3 className="mb-5 ml-2 text-5xl font-light text-gray-700">{material["Active Cathode"]}</h3>
+            <h3 className="mb-5 ml-2 text-5xl font-light text-indigo-900">{material["Active Cathode"]}</h3>
 
             
-            <div className="grid sm:grid-cols-2 gap-5 p-5 rounded-md bg-white/50 mb-5">
-                <header className="text-3xl font-bold text-slate-800">Performance</header>
+            <div className="grid sm:grid-cols-2 gap-5 p-5 rounded-md bg-white mb-5">
+                <header className="text-3xl font-bold text-indigo-800">Performance</header>
                 {performanceColumn.map((col, index) => (
                     <div key={index} className="flex flex-1 justify-between border-b gap-3 border-b-gray-700/20 border-spacing-2">
                         <p className="text-zinc-500">{col}</p>
@@ -183,8 +186,8 @@ const BatteryID = () => {
                 ))}
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-5 p-5 rounded-md bg-white/50 mb-5">
-            <header className="text-3xl font-bold text-slate-800">Materials</header>
+            <div className="grid sm:grid-cols-2 gap-5 p-5 rounded-md bg-white mb-5">
+            <header className="text-3xl font-bold text-indigo-800">Materials</header>
                 {materialColumn.map((col, index) => (
                     <div key={index} className="columns-2 border-b gap-3 border-b-gray-700/20 border-spacing-2">
                         <p className="text-zinc-500">{col}</p>
@@ -193,8 +196,8 @@ const BatteryID = () => {
                 ))}
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-5 p-5 rounded-md bg-white/50 mb-5">
-            <header className="text-3xl font-bold text-slate-800">Testing Condition</header>
+            <div className="grid sm:grid-cols-2 gap-5 p-5 rounded-md bg-white mb-5">
+            <header className="text-3xl font-bold text-indigo-800">Testing Condition</header>
                 {testingColumn.map((col, index) => (
                     <div key={index} className="columns-2 border-b gap-3 border-b-gray-700/20 border-spacing-2">
                         <p className="text-zinc-500">{col}</p>
@@ -203,8 +206,8 @@ const BatteryID = () => {
                 ))}
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-5 p-5 rounded-md bg-white/50 mb-5">
-            <header className="text-3xl font-bold text-slate-800">Cell Information</header>
+            <div className="grid sm:grid-cols-2 gap-5 p-5 rounded-md bg-white mb-5">
+            <header className="text-3xl font-bold text-indigo-800">Cell Information</header>
                 {cell_information.map((col, index) => (
                     <div key={index} className="flex flex-1 justify-between border-b gap-3 border-b-gray-700/20 border-spacing-2">
                         <p className="text-zinc-500">{col}</p>
@@ -213,15 +216,23 @@ const BatteryID = () => {
                 ))}
             </div>
 
-            <div className="grid grid-flow-row gap-5 p-5 rounded-md bg-white/50 mb-5">
-                <header className="text-3xl font-bold text-slate-800">Processing Details</header>
+            <div className="grid grid-flow-row gap-5 p-5 rounded-md bg-white mb-5">
+                <header className="text-3xl font-bold text-indigo-800">Material Processing</header>
                 <div className="columns-2 gap-3 text-gray-600">
                     <p>{processing}</p>
                 </div>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-5 p-5 rounded-md bg-white/50 mb-5 text-blue-600">
-            <header className="text-3xl font-bold text-slate-800">Research Paper</header>
+            <div className="grid grid-flow-row gap-5 p-5 rounded-md bg-white mb-5">
+                <header className="text-3xl font-bold text-indigo-800">Cell Assembly</header>
+                <div className="columns-2 gap-3 text-gray-600">
+                    <p>{cellAssembly}</p>
+                </div>
+            </div>
+
+
+            <div className="grid sm:grid-cols-2 gap-5 p-5 rounded-md bg-white mb-5 text-blue-600">
+            <header className="text-3xl font-bold text-indigo-800">Research Paper</header>
                 {researchColumn.map((col, index) => (
                     <div key={index} className="flex flex-1 justify-between border-b gap-3 border-b-gray-700/20 border-spacing-2">
                         <p className="text-zinc-500">{col}</p>
@@ -231,7 +242,7 @@ const BatteryID = () => {
             </div>
             </div>
 
-
+            <br />
             <RelatedResearch id={research.id} contentRef={ContentRef} />
         </Layout>
     );

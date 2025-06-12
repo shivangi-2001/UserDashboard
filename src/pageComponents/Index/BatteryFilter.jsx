@@ -48,74 +48,78 @@ const BatteryFilter = () => {
     };
 
     return (
-        <div className="bg-white text-gray-800 px-4 pt-2 rounded-md border w-full mt-2 shadow-lg">
-            {/* Header Section */}
-            <div className="flex justify-between items-center border-b pb-2">
-                <h2 className="text-2xl">Filters</h2>
-                <div className="flex items-center gap-2">
-                    <button className="border border-gray-500 px-3 py-1 rounded-lg hover:border-red-600 hover:text-red-600 transition" onClick={resetHandler} >
-                        Reset
-                    </button>
-                    {hideFilter ? (
-                        <MdOutlineArrowDropUp className="w-7 h-7 cursor-pointer" onClick={() => setHideFilter(false)} />
-                    ) : (
-                        <MdOutlineArrowDropDown className="w-7 h-7 cursor-pointer" onClick={() => setHideFilter(true)} />
-                    )}
+        <div className="bg-slate-100 p-3 md:p-6">
+            <div className=" text-gray-800 pt-2 rounded-md w-full md:w-[80%] mx-auto mt-2">
+                {/* Header Section */}
+                <div className="flex justify-between items-center py-4 border-b border-black/20">
+                    <h2 className="text-2xl mx-3 font-bold">Filters</h2>
+                    <div className="flex items-center gap-2">
+                        <button 
+                            className="rounded-md bg-red-500 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-red-700 hover:bg-red-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"                        
+                            onClick={resetHandler} >
+                            Reset
+                        </button>
+                        {hideFilter ? (
+                            <MdOutlineArrowDropUp className="w-7 h-7 cursor-pointer" onClick={() => setHideFilter(false)} />
+                        ) : (
+                            <MdOutlineArrowDropDown className="w-7 h-7 cursor-pointer" onClick={() => setHideFilter(true)} />
+                        )}
+                    </div>
                 </div>
-            </div>
 
-            {/* Animated Filter Section */}
-            <div className={`mb-4 overflow-hidden transition-all duration-500 ${ hideFilter ? "max-h-0 opacity-0 translate-y-[-10px] pointer-events-none" : "max-h-[500px] opacity-100 translate-y-0 pointer-events-auto" }`} >                
-                <form className="p-4 space-y-4">
-                    <div className="grid md:grid-cols-4 gap-4">
-                        {/* Min Filters */}
-                        {filter_min_parameter.map((filter, index) => (
-                            <div key={index} className="flex flex-col">
-                                <label className="font-semibold">{filter.label}</label>
-                                <input
-                                    type="number"
-                                    name={filter.name}
-                                    placeholder="Min"
-                                    value={filter_set[filter.name] || ""}
-                                    onChange={onChangeHandler}
-                                    min={filter.min}
-                                    className="w-full bg-white border border-gray-300 rounded-lg shadow-sm px-3 py-2 text-gray-900 hover:bg-gray-100 focus:outline-none"
-                                />
-                            </div>
-                        ))}
-
-                        {/* Max/Min Filters */}
-                        {filter_maxmin_parameter.map((filter, index) => (
-                            <div key={index} className="flex flex-col">
-                                <label className="font-semibold">{filter.label}</label>
-                                <div className="flex gap-2">
+                {/* Animated Filter Section */}
+                <div className={`mb-4 transition-all duration-300 ${ hideFilter ? "max-h-0 opacity-0 translate-y-[-10px] pointer-events-none" : "opacity-100 translate-y-0 pointer-events-auto" }`} >                
+                    <form className="py-2 space-y-4">
+                        <div className="grid md:grid-cols-4 gap-4">
+                            {/* Min Filters */}
+                            {filter_min_parameter.map((filter, index) => (
+                                <div key={index} className="flex flex-col">
+                                    <label className="font-semibold">{filter.label}</label>
                                     <input
                                         type="number"
-                                        name={filter.min_name}
+                                        name={filter.name}
                                         placeholder="Min"
-                                        value={filter_set[filter.min_name] || ""}
+                                        value={filter_set[filter.name] || ""}
                                         onChange={onChangeHandler}
                                         min={filter.min}
                                         className="w-full bg-white border border-gray-300 rounded-lg shadow-sm px-3 py-2 text-gray-900 hover:bg-gray-100 focus:outline-none"
                                     />
-                                    <input
-                                        type="number"
-                                        name={filter.max_name}
-                                        placeholder="Max"
-                                        value={filter_set[filter.max_name] || ""}
-                                        onChange={onChangeHandler}
-                                        max={filter.max}
-                                        className="w-full bg-white border border-gray-300 rounded-lg shadow-sm px-3 py-2 text-gray-900 hover:bg-gray-100 focus:outline-none"
-                                    />
                                 </div>
-                            </div>
-                        ))}
+                            ))}
 
-                        <ShuttlingIonSelector />
-                        <MeasurementMethod />
-                        <FullHalfCell />
-                    </div>
-                </form>
+                            {/* Max/Min Filters */}
+                            {filter_maxmin_parameter.map((filter, index) => (
+                                <div key={index} className="flex flex-col">
+                                    <label className="font-semibold">{filter.label}</label>
+                                    <div className="flex gap-2">
+                                        <input
+                                            type="number"
+                                            name={filter.min_name}
+                                            placeholder="Min"
+                                            value={filter_set[filter.min_name] || ""}
+                                            onChange={onChangeHandler}
+                                            min={filter.min}
+                                            className="w-full bg-white border border-gray-300 rounded-lg shadow-sm px-3 py-2 text-gray-900 hover:bg-gray-100 focus:outline-none"
+                                        />
+                                        <input
+                                            type="number"
+                                            name={filter.max_name}
+                                            placeholder="Max"
+                                            value={filter_set[filter.max_name] || ""}
+                                            onChange={onChangeHandler}
+                                            max={filter.max}
+                                            className="w-full bg-white border border-gray-300 rounded-lg shadow-sm px-3 py-2 text-gray-900 hover:bg-gray-100 focus:outline-none"
+                                        />
+                                    </div>
+                                </div>
+                            ))}
+
+                            <ShuttlingIonSelector />
+                            <MeasurementMethod />
+                            <FullHalfCell />
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     );

@@ -10,6 +10,7 @@ const AddContribution = () => {
     const [activeTab, setActiveTab] = useState('form')
     return (
         <Layout>
+            <div className="container mx-auto px-4 py-8">
             <Link to="/contribution" className="inline-flex gap-1 align-middle">
                 <ArrowLeftCircleIcon className="size-5" />
                 <p className="hover:underline">Back</p>
@@ -36,6 +37,7 @@ const AddContribution = () => {
             {activeTab === 'upload' && (
                 <UplaodExcel />
             )}
+            </div>
         </Layout>
     );
 }

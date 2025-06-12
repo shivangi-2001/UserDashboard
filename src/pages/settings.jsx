@@ -40,6 +40,7 @@ const Settings = () => {
 
   return (
     <Layout>
+      <div className="container mx-auto px-4 py-8">
       <div className="text-3xl flex flex-row items-center gap-1">
         <MdSettings className="inline-block" />
         <span>Settings</span>
@@ -86,6 +87,7 @@ const Settings = () => {
 
         {/* Tab Content */}
         <div className="mt-4 xl:mt-10">{renderContent()}</div>
+      </div>
       </div>
     </Layout>
   );

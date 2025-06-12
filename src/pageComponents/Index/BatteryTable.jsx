@@ -44,9 +44,9 @@ const BatteryTable = () => {
     
     
     return ( 
-        <div className="z-100 bg-white border border-gray-300 text-[#202536] pt-2 rounded-md w-full mt-2">
+        <div className="z-100 bg-white border border-gray-300 text-[#202536]rounded-md w-full md:w-[80%] mx-auto mt-6">
             {/* Table Header */}
-            <div className="flex justify-between items-center border-b pb-2 px-4">
+            <div className="flex justify-between items-center border-b py-4 px-4 bg-gray-50">
                 {!isLoading ? <div className="capitalize">
                     <span className="text-4xl mr-1">{totalRecords}</span> Matches your result 
                     <div className="capitalize text-sm"> Showing 
@@ -56,7 +56,7 @@ const BatteryTable = () => {
                     </div>
                 </div>: <LoadingPage />}
                 <Menu as="div" className="relative flex justify-end">
-                    <MenuButton className="flex items-center justify-between px-2 bg-primary border ring-1 ring-slate-800 border-gray-300 rounded-md shadow-sm py-1 text-white focus:outline-none">
+                    <MenuButton className="flex items-center justify-between px-2 bg-indigo-500 py-2 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-indigo-700 hover:bg-indigo-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2">
                         Columns
                         <IoIosArrowDropdownCircle className="w-5 ml-2" aria-hidden="true" />
                     </MenuButton>

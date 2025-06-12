@@ -35,8 +35,7 @@ export const SettingAPI = createApi({
         })
     }),
     editProfile: build.mutation({
-        query: (formData) => (
-            console.log(formData),{
+        query: (formData) => ({
             url: '/user/profile/',
             method: 'PATCH',
             body: formData

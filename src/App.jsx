@@ -24,7 +24,7 @@ function App() {
           index: true,
           element: (
             <>
-              <PageTitle title="Battery Explorer" />
+              <PageTitle title="Power Tatttvasar" />
               <Index />
             </>
           ),

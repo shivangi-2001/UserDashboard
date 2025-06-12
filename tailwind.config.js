@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Outfit', 'sans-serif'],
+      },
       colors: {
         current: 'currentColor',
         transparent: 'transparent',
@@ -38,6 +41,19 @@ export default {
         success: '#219653',
         danger: '#D34053',
         warning: '#FFA70B',
+        "gray-25": "#fcfcfd",
+        "gray-50": "#f9fafb",
+        "gray-100": "#f2f4f7",
+        "gray-200": "#e4e7ec",
+        "gray-300": "#d0d5dd",
+        "gray-400": "#98a2b3",
+        "gray-500": "#667085",
+        "gray-600": "#475467",
+        "gray-700": "#344054",
+        "gray-800": "#1d2939",
+        "gray-900": "#101828",
+        "gray-950": "#0c111d",
+        "gray-dark": '#1a2231'
       },
       fontSize: {
         'title-xxl': ['44px', '55px'],

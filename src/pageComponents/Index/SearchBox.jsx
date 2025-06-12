@@ -86,7 +86,7 @@ const SearchBox = ({ batteryContentRef }) => {
   }, [window_params, param_value, setSearchURL, dispatch]);
 
   return (
-    <div className="grid grid-flow-row justify-center md:mb-10">
+    <div className="grid grid-flow-row justify-center mb-5 sm:mb-10">
       {/* Error Message */}
       {error && <div className="text-red-500 text-center mt-2">{error}</div>}
 
@@ -129,7 +129,7 @@ const SearchBox = ({ batteryContentRef }) => {
         </button>
         
         {/* Periodic Table Button */}
-        <button className="hidden md:flex items-center justify-center border mx-[1px] border-red-500 bg-red-100 h-12" title="Show Periodic Table" onClick={togglePeriodicTable} >
+        <button className="hidden md:flex items-center justify-center border bg-yellow-100 h-12" title="Show Periodic Table" onClick={togglePeriodicTable} >
           <img src={periodic_icon} alt="periodic-table-img" className="h-full object-contain p-1 w-15 border" />
         </button>
 
@@ -146,7 +146,7 @@ const SearchBox = ({ batteryContentRef }) => {
       <div className={`absolute -top-8 z-99 md:w-[530px] md:ml-28 h-30 border-2 overflow-scroll transition-all duration-300 ${!hideInfo ? "max-h-0 opacity-0" : "max-h-[500px] opacity-100"}`}>
           <div className="bg-white p-2 text-xs overflow-scroll">
             <p className="mb-3">Search Example</p>
-            <div className="text-[16px] font-bold flex flex-col gap-3">
+            <div className="text-[16px] font-bold flex flex-col gap-4">
               <p>Include at least elements in formula charge: <span className="font-thin text-blue-600 bg-gray-200 px-1.5 py-0.5 text-[16px]"><a href="" className="hover:underline">Fe,O,Ti</a></span></p>
               <p>Include only elements in formula charge:</p>
               <p>Include only elements plus wildcards in formula charge:</p>

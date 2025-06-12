@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
         <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
           <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
           <main className="min-h-[370px]">
-            <div className="mx-auto p-4 xl:p-7">
+            <div className="mx-auto">
               {children}
             </div>
           </main>
